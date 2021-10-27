@@ -1,0 +1,58 @@
+#navbar {
+  border-bottom: 1px solid #DDD;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+#navbar li {
+  margin: 10px;
+}
+
+#navbar a, .inline-link-default {
+  text-decoration: none;
+  color: #444;
+}
+
+#navbar a:hover, .inline-link-default:hover {
+  color: #000;
+}
+
+.navbar-btn-left {
+  float: left;
+}
+
+.navbar-btn-right {
+  float: right;
+}
+
+#res-cont {
+  margin: 0px;
+  padding: 5px;
+  /* Use when need to debug main body border: 1px solid brown; */
+  margin: auto;
+}
+
+@media (pointer:none), (pointer:coarse), (max-width: 800px) {
+  #res-cont {
+    width: 100%;
+  }
+}
+
+@media (pointer:fine) and (min-width: 800px) and (orientation:landscape) {
+  #res-cont {
+    width: max(45%, 800px);
+  }
+}
+
+.main-404 {
+  height: 80%;
+  position: absolute;
+}
+
+.problem-block-index {
+    border: none;
+    border-bottom: solid 1px #ccc;
+    padding: 10px 0px;
+}

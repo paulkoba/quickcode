@@ -15,7 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from website import views
+
+handler404 = 'website.views.not_found'
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', views.index),
+    path('about/', views.about),
+    path('login/', views.login),
+    path('problem/<uuid:problem_id>', views.problem, name='problem')
 ]

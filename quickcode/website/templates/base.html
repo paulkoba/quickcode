@@ -1,10 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    {% block title %}<title>Title</title>{% endblock %}
+
+    {% load static %}
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
+    <div>
+        {%block navbar%}
+        <nav>
+            <ul id='navbar'>
+                <li class='navbar-btn-left'>
+                    <a href="/">Home</a>
+                </li>
+                <li class='navbar-btn-left'>
+                    <a href="/about">About</a>
+                </li>
+                <li class='navbar-btn-right'>
+                    <a href="/login">Login</a>
+                </li>
+          </ul>
+        </nav>
+        {% endblock %}
 
+        {%block content%}
+        <div>
+            TBD
+        </div>
+        {% endblock %}
+    </div>
 </body>
 </html>

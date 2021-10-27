@@ -1,9 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    {% block title %}<title>Title</title>{% endblock %}
-</head>
-<body>
-Hello, world!
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block content %}
+<div id="res-cont">
+  <center><h1>TBD - Index</h1></center>
+
+  {% for element in problems %}
+  <div class="problem-block-index">
+    <a class="inline-link-default" href="{% url "problem" element.id %}">
+      {{forloop.counter}}. {{element}}
+    </a>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}
