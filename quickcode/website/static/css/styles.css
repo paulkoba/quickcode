@@ -56,3 +56,10 @@
     border-bottom: solid 1px #ccc;
     padding: 10px 0px;
 }
+
+.code-sample {
+    border-radius: 5px;
+    padding: 15px;
+    width: 100%;
+    background-color: #EEE;
+}
