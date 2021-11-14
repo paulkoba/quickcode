@@ -25,5 +25,10 @@
     </div>
   {% endif %}
 
+  <form method="post" enctype="multipart/form-data" class="submission-form">
+    {% csrf_token %}
+    {{ form }}
+    <input class="submission-button" type="submit" value="Submit">
+  </form>
 </div>
 {% endblock %}

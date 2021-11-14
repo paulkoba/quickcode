@@ -1,11 +1,10 @@
-from django.db import models
 import uuid
+from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 
 class Problem(models.Model):
     """Model representing a problem."""
-
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, help_text='Unique ID for this particular problem')
     name = models.CharField(max_length=255, help_text='Problem name')
     description = models.TextField()
@@ -16,7 +15,6 @@ class Problem(models.Model):
 
 class TestCase(models.Model):
     """Model representing a test case for a particular problem."""
-
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, help_text='Unique ID for this particular problem')
     input = models.TextField()
     output = models.TextField()
@@ -24,10 +22,16 @@ class TestCase(models.Model):
     executionLimit = models.IntegerField()
 
 
+def location(instance, filename):
+    return '/'.join(['submissions', str(instance.id), 'submission.cpp'])
+
+
 class Submission(models.Model):
     """Model representing a submission for a particular problem."""
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, help_text='Unique ID for this particular submission')
     problem = models.ForeignKey(Problem, on_delete=models.CASCADE)
+
+    file = models.FileField(upload_to=location)
 
     class Result(models.TextChoices):
         SUCCESS = 'S', _('Successful')

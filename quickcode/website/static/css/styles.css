@@ -28,10 +28,9 @@
 }
 
 #res-cont {
-  margin: 0px;
+  margin: auto;
   padding: 5px;
   /* Use when need to debug main body border: 1px solid brown; */
-  margin: auto;
 }
 
 @media (pointer:none), (pointer:coarse), (max-width: 800px) {
@@ -52,14 +51,28 @@
 }
 
 .problem-block-index {
-    border: none;
-    border-bottom: solid 1px #ccc;
-    padding: 10px 0px;
+  border: none;
+  border-bottom: solid 1px #ccc;
+  padding: 10px 0px;
 }
 
 .code-sample {
-    border-radius: 5px;
-    padding: 15px;
-    width: 100%;
-    background-color: #EEE;
+  border-radius: 5px;
+  padding: 15px;
+  width: 100%;
+  background-color: #EEE;
 }
+
+.submission-form {
+  padding: 10px;
+  margin: auto;
+  width: 50%;
+}
+
+.submission-form .submission-button {
+  float: right;
+}
+
+.submission-form select {}
+
+.submission-form input {}
