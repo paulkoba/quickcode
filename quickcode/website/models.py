@@ -26,18 +26,20 @@ def location(instance, filename):
     return '/'.join(['submissions', str(instance.id), 'submission.cpp'])
 
 
+class Result(models.TextChoices):
+    SUCCESS = 'S', _('Successful')
+    TIMEOUT = 'T', _('Time Limit Exceeded')
+    WRONG = 'W', _('Wrong Answer')
+    UNKNOWN = 'U', _('Unknown')
+    FAIL = 'F', _('Failed')
+
+
 class Submission(models.Model):
     """Model representing a submission for a particular problem."""
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, help_text='Unique ID for this particular submission')
     problem = models.ForeignKey(Problem, on_delete=models.CASCADE)
 
     file = models.FileField(upload_to=location)
-
-    class Result(models.TextChoices):
-        SUCCESS = 'S', _('Successful')
-        TIMEOUT = 'T', _('Time Limit Exceeded')
-        WRONG = 'W', _('Wrong Answer')
-        UNKNOWN = 'U', _('Unknown')
 
     result = models.CharField(max_length=1,
                               choices=Result.choices,
