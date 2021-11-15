@@ -32,6 +32,7 @@ class Result(models.TextChoices):
     WRONG = 'W', _('Wrong Answer')
     UNKNOWN = 'U', _('Unknown')
     FAIL = 'F', _('Failed')
+    COMPILATION_ERROR = 'C', _('Compilation Error')
 
 
 class Submission(models.Model):
