@@ -3,6 +3,11 @@
 {% block title %}{{problem.name}}{% endblock %}
 
 {% block content %}
+<script>
+if ( window.history.replaceState ) {
+  window.history.replaceState( null, null, window.location.href );
+}
+</script>
 <div id="res-cont">
   <center><h1>{{problem.name}}</h1></center>
 
