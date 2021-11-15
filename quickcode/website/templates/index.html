@@ -2,14 +2,14 @@
 
 {% block content %}
 <div id="res-cont">
-  <center><h1>Index</h1></center>
+    <center><h1>Index</h1></center>
 
-  {% for element in problems %}
-  <div class="problem-block-index">
-    <a class="inline-link-default" href="{% url "problem" element.id %}">
-      {{forloop.counter}}. {{element}}
-    </a>
-  </div>
-  {% endfor %}
+    {% for element in problems %}
+    <div class="problem-block-index">
+        <a class="inline-link-default" href="{% url " problem" element.id %}">
+        {{forloop.counter}}. {{element}}
+        </a>
+    </div>
+    {% endfor %}
 </div>
 {% endblock %}

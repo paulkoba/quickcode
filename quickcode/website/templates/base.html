@@ -8,28 +8,28 @@
     {% block hblock %}{% endblock %}
 </head>
 <body>
-    <div>
-        {%block navbar%}
-        <nav>
-            <ul id='navbar'>
-                <li class='navbar-btn-left'>
-                    <a href="/">Home</a>
-                </li>
-                <li class='navbar-btn-left'>
-                    <a href="/about">About</a>
-                </li>
-                <li class='navbar-btn-right'>
-                    <a href="/login">Login</a>
-                </li>
-          </ul>
-        </nav>
-        {% endblock %}
+<div>
+    {%block navbar%}
+    <nav>
+        <ul id='navbar'>
+            <li class='navbar-btn-left'>
+                <a href="/">Home</a>
+            </li>
+            <li class='navbar-btn-left'>
+                <a href="/about">About</a>
+            </li>
+            <li class='navbar-btn-right'>
+                <a href="/login">Login</a>
+            </li>
+        </ul>
+    </nav>
+    {% endblock %}
 
-        {%block content%}
-        <div>
-            TBD
-        </div>
-        {% endblock %}
+    {%block content%}
+    <div>
+        TBD
     </div>
+    {% endblock %}
+</div>
 </body>
 </html>

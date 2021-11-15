@@ -7,37 +7,38 @@
 if ( window.history.replaceState ) {
   window.history.replaceState( null, null, window.location.href );
 }
+
 </script>
 {% endblock %}
 
 {% block content %}
 
 <div id="res-cont">
-  <center><h1>{{problem.name}}</h1></center>
+    <center><h1>{{problem.name}}</h1></center>
 
 
-  <h3>Problem</h3>
-  {{problem.description|safe}}
+    <h3>Problem</h3>
+    {{problem.description|safe}}
 
-  <br>
-  <h3>Submissions</h3>
+    <br>
+    <h3>Submissions</h3>
 
-  {% if submissions %}
+    {% if submissions %}
     {% for element in submissions %}
-      <div class="problem-block-index">
-        {{element.get_result_display}} - {{element.submissionTime}}
-      </div>
-    {% endfor %}
-  {% else %}
     <div class="problem-block-index">
-      No submissions done yet.
+        {{element.get_result_display}} - {{element.submissionTime}}
     </div>
-  {% endif %}
+    {% endfor %}
+    {% else %}
+    <div class="problem-block-index">
+        No submissions done yet.
+    </div>
+    {% endif %}
 
-  <form method="post" enctype="multipart/form-data" class="submission-form">
-    {% csrf_token %}
-    {{ form }}
-    <input class="submission-button" type="submit" value="Submit">
-  </form>
+    <form method="post" enctype="multipart/form-data" class="submission-form">
+        {% csrf_token %}
+        {{ form }}
+        <input class="submission-button" type="submit" value="Submit">
+    </form>
 </div>
 {% endblock %}
