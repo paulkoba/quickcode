@@ -43,8 +43,9 @@ def test_submission(source, problem_id):
         if execution_time > el.executionLimit:
             timed_out = True
 
-    source.result = Result.SUCCESS if correct_answers else Result.WRONG
-    if timed_out:
-        source.result = Result.TIMEOUT
+    if correct_answers and not timed_out:
+        source.result = Result.SUCCESS
+    else:
+        source.result = Result.TIMEOUT if timed_out else Result.WRONG
 
     source.save()

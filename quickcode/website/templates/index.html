@@ -6,7 +6,7 @@
 
     {% for element in problems %}
     <div class="problem-block-index">
-        <a class="inline-link-default" href="{% url " problem" element.id %}">
+        <a class="inline-link-default" href="{% url "problem" element.id %}">
         {{forloop.counter}}. {{element}}
         </a>
     </div>
