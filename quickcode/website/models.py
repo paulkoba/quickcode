@@ -3,6 +3,11 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 
+LANGUAGE = (
+    (1, _("CPP")),
+    (2, _("Python"))
+)
+
 class Problem(models.Model):
     """Model representing a problem."""
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, help_text='Unique ID for this particular problem')
@@ -19,11 +24,11 @@ class TestCase(models.Model):
     input = models.TextField()
     output = models.TextField()
     problem = models.ForeignKey(Problem, on_delete=models.CASCADE)
-    executionLimit = models.IntegerField()
+    execution_limit = models.IntegerField()
 
 
 def location(instance, filename):
-    return '/'.join(['submissions', str(instance.id), 'submission.cpp'])
+    return '/'.join(['submissions', str(instance.id), 'submission'])
 
 
 class Result(models.TextChoices):
@@ -47,6 +52,8 @@ class Submission(models.Model):
                               default=Result.UNKNOWN, )
 
     submissionTime = models.DateTimeField(auto_now=True)
+
+    language = models.CharField(max_length=1, choices=LANGUAGE, default=1)
 
 
 class SubmissionResultTestCase(models.Model):

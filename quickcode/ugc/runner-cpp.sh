@@ -2,6 +2,8 @@
 
 mkdir output/
 
+cp ./submission ./submission.cpp
+
 if g++ -O3 -march=native ./submission.cpp; then
   echo "$?" >./output/compilation-result
 else

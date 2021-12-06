@@ -10,11 +10,20 @@ def test_submission(source, problem_id):
 
     tests = TestCase.objects.all().filter(problem=problem_id)
 
+    cumulative_time_limit = 5
+
     for el in tests:
+        cumulative_time_limit += el.execution_limit
         with open(dir_name + '/tests/' + str(el.id), 'w') as f:
             f.write(el.input)
 
-    os.popen(str(Path(dir_name).parent.parent.absolute()) + '/ugc/safe-execute.sh ' + str(source.id)).read()
+    if source.language == "1":
+        os.popen(str(Path(dir_name).parent.parent.absolute()) + '/ugc/safe-execute-cpp.sh '
+                 + str(source.id) + ' ' + str(cumulative_time_limit)).read()
+
+    if source.language == "2":
+        os.popen(str(Path(dir_name).parent.parent.absolute()) + '/ugc/safe-execute-python.sh '
+                 + str(source.id) + ' ' + str(cumulative_time_limit)).read()
 
     correct_answers = True
     timed_out = False
@@ -38,9 +47,14 @@ def test_submission(source, problem_id):
             timed_out = True
             break
 
-        execution_time = float(time_file_contents)
+        execution_time = 0
 
-        if execution_time > el.executionLimit:
+        try:
+            execution_time = float(time_file_contents)
+        except ValueError:
+            correct_answers = False
+
+        if execution_time > el.execution_limit:
             timed_out = True
 
     if correct_answers and not timed_out:

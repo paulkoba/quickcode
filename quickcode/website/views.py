@@ -22,7 +22,8 @@ def problem(request, problem_id):
             print(form.errors)
             return render(request, 'not_found.html')
         else:
-            submission = Submission(file=form.cleaned_data['file'], problem=Problem.objects.get(id=problem_id))
+            submission = Submission(file=form.cleaned_data['file'], problem=Problem.objects.get(id=problem_id),
+                                    language=form.cleaned_data['language'])
             submission.save()
 
             test_submission(submission, problem_id)
